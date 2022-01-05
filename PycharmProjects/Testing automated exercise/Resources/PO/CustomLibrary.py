@@ -1,6 +1,7 @@
 import pyautogui as py
 import time
 # pip install pyautogui
+py.FAILSAFE = False
 
 
 class CustomLibrary(object):

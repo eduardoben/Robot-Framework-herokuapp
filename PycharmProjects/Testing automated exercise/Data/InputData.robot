@@ -1,6 +1,6 @@
 *** Variables ***
 # Configuration
-${BROWSER} =  Chrome
+${BROWSER} =  edge
 ${BASE_URL}=     https://ss-testing-automated-exercise.herokuapp.com/
 ${BLANK} =  about:blank
 

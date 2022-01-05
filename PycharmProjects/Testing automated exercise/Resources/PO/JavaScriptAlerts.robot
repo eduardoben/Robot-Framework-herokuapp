@@ -23,4 +23,4 @@ Managing Alerts
 Validation Alerts
     [Documentation]     Validates confirmation message from website.
     ${confirmation}=    Get Text    ${RESULT_LOCATOR}
-    List Should Contain Value       ${MESSAGES}     ${confirmation}
+    List Should Contain Value       ${ALERT_MESSAGES}    ${confirmation}
