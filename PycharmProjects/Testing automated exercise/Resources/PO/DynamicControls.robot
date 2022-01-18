@@ -1,5 +1,6 @@
 *** Settings ***
 Library     SeleniumLibrary
+Resource    ../Common.robot
 
 *** Variables ***
 ${REMOVE_BUTTON}=   xpath=  /html/body/div[2]/div/div[1]/form[1]/button
@@ -12,12 +13,15 @@ ${TEXT_INPUT}=      xpath=  /html/body/div[2]/div/div[1]/form[2]/input
 Removing Checkbox
     [Documentation]     Clicks on remove button and later trigger validation keyword. Always waiting for elements in page.
     Wait Until Page Contains Element    ${REMOVE_BUTTON}
-    Click Button    ${REMOVE_BUTTON}
+    Click With Javascript    ${REMOVE_BUTTON}
+    Wait Until Page Contains Element    ${CHECKBOX}
     Validating actions  ${CHECKBOX}
+
 Enabling Input
     [Documentation]     Clicks on enable button and later trigger validation keyword. Always waiting for elements in page.
     Wait Until Page Contains Element    ${ENABLE_BUTTON}
-    Click Button    ${ENABLE_BUTTON}
+    Click With Javascript   ${ENABLE_BUTTON}
+    Wait Until Page Contains Element    ${TEXT_INPUT}
     Validating actions  ${TEXT_INPUT}
 
 Validating actions

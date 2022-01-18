@@ -1,10 +1,8 @@
 *** Settings ***
 Library     SeleniumLibrary
 Library     OperatingSystem
-
-
-
-
+Library     CustomLibrary.py
+Resource    ../Common.robot
 
 *** Variables ***
 ${ENABLE_LOCATOR}=  xpath=  /html/body/div[2]/div[1]/div/div/ul/li[2]/a
@@ -12,11 +10,18 @@ ${DOWNLOADS_LOCATOR}=   xpath= /html/body/div[2]/div[1]/div/div/ul/li[2]/ul/li[1
 ${EXCEL_LOCATOR}=   xpath= /html/body/div[2]/div[1]/div/div/ul/li[2]/ul/li[1]/ul/li[3]/a
 *** Keywords ***
 Navigating Menu
-    Click Element    ${ENABLE_LOCATOR}
-    Wait Until Element Is Visible    ${DOWNLOADS_LOCATOR}
-    Click Element    ${DOWNLOADS_LOCATOR}
-    Wait Until Element Is Visible    ${EXCEL_LOCATOR}
-    Click Element    ${EXCEL_LOCATOR}
+
+    Click With Javascript   ${ENABLE_LOCATOR}
+    Wait Until Page Contains Element    ${DOWNLOADS_LOCATOR}
+    Click With Javascript    ${DOWNLOADS_LOCATOR}
+    Wait Until Page Contains Element    ${EXCEL_LOCATOR}
+    Click With Javascript    ${EXCEL_LOCATOR}
+    IF    "${BROWSER}" == 'ie'
+         Ie Download
+    END
+   IF    "${BROWSER}" == 'firefox'
+         Fx Download
+    END
     Validating Download
 
 Validating Download

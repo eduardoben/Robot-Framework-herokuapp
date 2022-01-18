@@ -1,6 +1,8 @@
 *** Settings ***
 Library     SeleniumLibrary
+Resource    ../Common.robot
 Library     Dialogs
+
 *** Variables ***
 ${ADD_BUTTON} =     xpath=/html/body/div[2]/div/div/button
 ${DELETING_BUTTON} =    xpath=/html/body/div[2]/div/div/div/button[1]
@@ -12,7 +14,8 @@ ${J}=   ${EMPTY}
 Validating number of elements
     [Documentation]    Validates that actual number of elements and expected number of elements are the same.
     [Arguments]     ${J}
-    ${ACTUAL_ELEMENTS}=    get element count    xpath:/html/body/div[2]/div/div/div/button
+
+    ${ACTUAL_ELEMENTS}=     get element count    xpath:/html/body/div[2]/div/div/div/button
     ${EXPECTED_ELEMENTS}    SET VARIABLE    ${J}
     #LOG TO CONSOLE  ACTUAL VALUE:${ACTUAL_ELEMENTS}
     #LOG TO CONSOLE  EXPECTED VALUE:${EXPECTED_ELEMENTS}
@@ -28,10 +31,11 @@ Validating number of elements
 Adding_Element
     [Documentation]    Adds a certain number of elements and everytime a new element is added, a validation is run. It returns number of total elements
     FOR    ${I}    IN RANGE     20
+
         ${J}    SET VARIABLE      ${I}
         ${x}=     Validating number of elements     ${J}
         IF    "${x}" == "${TRUE}"
-            CLICK BUTTON    ${ADD_BUTTON}
+            Click With Javascript    ${ADD_BUTTON}
         ELSE
             EXIT FOR LOOP
         END
@@ -44,11 +48,12 @@ Deleting Element
     [Documentation]    Adds a certain number of elements (and validate each one), then delete elements one by one
     ${o}=   Adding_Element
     FOR     ${i}  IN RANGE    ${o}    0    -1
+
         ${J}    SET VARIABLE      ${i}
         ${x}=     Validating number of elements     ${J}
         IF    "${x}" == "${TRUE}"
         #Ask if validation was successful
-            CLICK BUTTON    ${DELETING_BUTTON}
+            Click With Javascript    ${DELETING_BUTTON}
             #If successful, then delete an element
         ELSE
             EXIT FOR LOOP

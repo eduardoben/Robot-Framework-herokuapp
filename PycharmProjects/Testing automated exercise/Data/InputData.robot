@@ -1,14 +1,15 @@
 *** Variables ***
 # Configuration
-${BROWSER} =  edge
-${BASE_URL}=     https://ss-testing-automated-exercise.herokuapp.com/
-${BLANK} =  about:blank
+# When selecting a browser type as shown:   firefox, ie, edge, chrome
+${BROWSER} =    firefox
+${BASE_URL}=    https://ss-testing-automated-exercise.herokuapp.com/
+${BLANK} =      about:blank
 
 # DATA - BASIC AUTH
 
-${LOGIN_URL}=   basic_auth
-&{VALIDCREDENTIALS}=    User=admin    Pass=admin    ExpectedStatus=200              #Includes expected status of a succesful petition
-&{INVALIDCREDENTIALS}=  User=admin1     Pass=admin1     ExpectedStatus=401          #Includes expected status of not succesful petition
+${LOGIN_URL}=               basic_auth
+&{VALIDCREDENTIALS}=        User=admin      Pass=admin      ExpectedStatus=200              #Includes expected status of a succesful petition
+&{INVALIDCREDENTIALS}=      User=admin1     Pass=admin1     ExpectedStatus=401              #Includes expected status of not succesful petition
 
 #DATA - ADDING/DELETING ELEMENTS
 ${APP_URL}=     https://ss-testing-automated-exercise.herokuapp.com/add_remove_elements/
@@ -45,9 +46,9 @@ ${FLOATING_URL}=    https://ss-testing-automated-exercise.herokuapp.com/floating
 
 #DATA - FORM AUTHENTENTICATION
 ${FORM_URL}=    https://ss-testing-automated-exercise.herokuapp.com/login
-&{VALIDUSER}=    User=tomsmith    Pass=SuperSecretPassword!     ExpectedMessage=You logged into a secure area!
-&{INVALIDUSER}=     User=tomsmith1    Pass=SuperSecretPassword!     ExpectedMessage=Your username is invalid!
-&{INVALIDPASS}=     User=tomsmith    Pass=SuperS1ecretPassword!     ExpectedMessage=Your password is invalid!
+&{VALIDUSER}=       User=tomsmith    Pass=SuperSecretPassword!     ExpectedMessage=You logged into a secure area!
+&{INVALIDUSER}=     User=tomsmith1   Pass=SuperSecretPassword!     ExpectedMessage=Your username is invalid!
+&{INVALIDPASS}=     User=tomsmith    Pass=SuperS1ecretPassword!    ExpectedMessage=Your password is invalid!
 
 #DATA - HORIZONTAL SLIDER
 ${SLIDER_URL}=  https://ss-testing-automated-exercise.herokuapp.com/horizontal_slider

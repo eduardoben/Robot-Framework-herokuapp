@@ -10,7 +10,7 @@ ${NOTAVAILABLE}=  0
 Checking Images
     [Documentation]     It checks how many images are broken and how many are not
     FOR     ${i}    IN  @{IMAGES_LOCATORS}
-
+        Wait Until Element Is Visible    ${i}
         ${img}=    Get Element Attribute   ${i}     src
         ${status}=  Run Keyword And Ignore Error   HEAD  ${img}    expected_status=200
         IF  "${status}[0]" == "PASS"

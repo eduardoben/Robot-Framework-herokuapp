@@ -1,21 +1,21 @@
 *** Settings ***
-Library     SeleniumLibrary
 Library     OperatingSystem
 Library     CustomLibrary.py
-Library     InputData.robot
+Library     SeleniumLibrary
+Resource    ../../Data/InputData.robot
+Resource    ../Common.robot
 *** Variables ***
-${MENU_LOCATOR}=    xpath=  /html/body/div[2]/div/div/div[1]/ul/li[1]/a
-${x}=   800
-${y}=   300
+${MENU_LOCATOR}=    xpath=/html/body/div[2]/div/div/div[1]/ul/li[1]/a
+
 *** Keywords ***
 
 Checking Floating Menu In View Port
 
-    ${ELEMENT}=     Get WebElement    ${MENU_LOCATOR}
-    Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
-    Wait Until Element Is Visible    ${MENU_LOCATOR}
-    move mouse and click    ${800}     ${120}
+    Wait Until Page Contains Element    ${MENU_LOCATOR}
+    Execute Javascript      window.scrollTo(0, document.body.scrollHeight)
+    Wait And Execute Keyword    Click With Javascript   ${MENU_LOCATOR}
     Validation Of Floating Menu
+
 
 Validation Of Floating Menu
     #[Arguments]     ${visible}
@@ -28,9 +28,11 @@ Validation Of Floating Menu
     END
 
 
+
 #This code was to detect if an element was in view port, it works fine with other elements, but not with floating menu.
-#${s2l}=     Get Library Instance    SeleniumLibrary
-    #${js}=      Get File    IsInViewPort.js
-    #${visible}=    Call Method
-    #...                ${s2l.driver}
-    #...                execute_script    ${js} return isInViewport(arguments[0]);    ${ELEMENT}
+#${driver}=     Get Library Instance    SeleniumLibrary
+#${element}=     Get WebElement    ${MENU_LOCATOR}
+ #    ${js}=      Get File    Resources/PO/Coordinates.js
+ #    ${visible}=    Call Method
+ #    ...                ${driver.driver}
+ #    ...                execute_script    ${js} return isInViewport(arguments[0]);    ${element}

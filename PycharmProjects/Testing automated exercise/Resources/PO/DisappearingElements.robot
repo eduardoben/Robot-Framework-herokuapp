@@ -13,7 +13,7 @@ Checking Disappearing Element
     #If the first time, the page does not display the element, it validates its abscence and later enter a loop until element exists and validates it.
     Wait Until Page Contains Element    ${CHARGED}
     ${exists}=  Run Keyword And Ignore Error     Page Should Contain Element     ${DISAPPEARING_ELEMENT}
-    Log To Console  ${exists}[0]
+
     IF    "${exists}[0]" == 'PASS'
         Log To Console    Element exists
         FOR     ${i}    IN RANGE    1000

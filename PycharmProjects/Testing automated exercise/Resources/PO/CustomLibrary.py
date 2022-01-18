@@ -1,5 +1,6 @@
 import pyautogui as py
 import time
+
 # pip install pyautogui
 py.FAILSAFE = False
 
@@ -7,17 +8,31 @@ py.FAILSAFE = False
 class CustomLibrary(object):
     VERSION = 1
 
-    def move_mouse_middle(self):
+    def move_mouse_out(self):
         screen = py.size()
-        py.moveTo(x=(screen.width/2), y=(screen.height/2))
-        self.move_mouse_initial()
-
-    def move_mouse_initial(self):
-        py.moveTo(0, 0)
+        py.dragTo(x=(screen.width/4), y=(screen.height/6), duration=1, mouseDownUp=False)
+        py.dragTo(0, 0, 1, mouseDownUp=False)
 
     def move_mouse_and_click(self, x, y):
         py.moveTo(x, y)
         py.click()
+
+    def ie_download(self):
+        time.sleep(2)
+        py.press(['tab', 'tab', 'enter'], interval=4)
+        py.leftClick(0, 0)
+
+    def fx_download(self):
+        time.sleep(2)
+        py.press(['down', 'enter'], interval=1)
+
+    def edge_multidownload(self):
+        time.sleep(2)
+        py.press(['tab', 'enter'], interval=4)
+
+    def chrome_multidownload(self):
+        time.sleep(2)
+        py.press(['tab', 'tab', 'enter'], interval=4)
 
     # JavaScript: HTML5 Drag and drop script
     # param1 (WebElement): Source element to drag
@@ -59,4 +74,3 @@ class CustomLibrary(object):
                            "(v,'dragend',1,function(){w(u.elementFromPoint(p,d),['mouseup','pointerup'])})})})})})}})"
         driver.execute_script(js_drag_drop, source, target, offsetX, offsetY, delay, key)
         time.sleep(delay * 2 / 1000)
-

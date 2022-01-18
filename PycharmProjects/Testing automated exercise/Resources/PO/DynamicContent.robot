@@ -22,7 +22,7 @@ Looking For All Images
         Reload Page
     END
     ${PAGE_IMAGES}=     Remove Duplicates   ${PAGE_IMAGES}
-    Log To Console  ${PAGE_IMAGES}
+
 
 
 Name Validation
