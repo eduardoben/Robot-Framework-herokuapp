@@ -27,7 +27,6 @@ Log Out
     [Documentation]     Logs out from page by clicking logout button
     Wait Until Page Contains Element    ${LOGOUT_LOCATOR}
     Click With Javascript   ${LOGOUT_LOCATOR}
-    Wait Until Page Contains Element    ${MESSAGES_LOCATOR}
     Validation Of Login State   You logged out of the secure area!
 
 Validation Of Login State
@@ -39,3 +38,4 @@ Validation Of Login State
         Pass Execution    Pass
     END
          
+

@@ -12,8 +12,10 @@ Test Teardown   End Web Test
 *** Test Cases ***
 
 
-Mouse Slider Manipulation
-    [Documentation]     Selects slider and simulates mouse dragging slider value. It validates final value.
-    [Setup]     Begin Web Test  ${SLIDER_URL}
-    AutomatedApp.Mouse Slider Manipulation
+
+#REQ    -   File Download
+File Download
+    [Documentation]     Click a link to trigger a download and later validates it.
+    [Setup]     Begin Web Test  ${FILE_URL}
+    AutomatedApp.File Download
 

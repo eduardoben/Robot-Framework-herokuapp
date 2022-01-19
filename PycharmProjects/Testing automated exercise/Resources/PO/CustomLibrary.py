@@ -1,9 +1,9 @@
 import pyautogui as py
 import time
-
+from selenium.webdriver import ActionChains
+from selenium import webdriver
 # pip install pyautogui
 py.FAILSAFE = False
-
 
 class CustomLibrary(object):
     VERSION = 1
@@ -17,10 +17,18 @@ class CustomLibrary(object):
         py.moveTo(x, y)
         py.click()
 
+    def move_initial(self):
+        screen = py.size()
+        py.click(x=(screen.width / 4), y=(screen.height / 6), duration=1)
+
+
     def ie_download(self):
         time.sleep(2)
-        py.press(['tab', 'tab', 'enter'], interval=4)
-        py.leftClick(0, 0)
+        py.press(['tab', 'tab', 'enter'], interval=1)
+
+    def ie_multidownload(self):
+        time.sleep(2)
+        py.press(['tab', 'tab', 'tab', 'tab', 'tab', 'tab', 'enter'], interval=10)
 
     def fx_download(self):
         time.sleep(2)
