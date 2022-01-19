@@ -46,7 +46,7 @@ Download File
             Chrome Multidownload
         END
     END
-v
+
     Wait Until Keyword Succeeds     01 min  30 sec    Move File   ../../downloads/some-file.txt    ${download directory}
     Wait Until Keyword Succeeds     01 min  30 sec    Move File   ../../downloads/test.txt    ${download directory}
     #Validation
