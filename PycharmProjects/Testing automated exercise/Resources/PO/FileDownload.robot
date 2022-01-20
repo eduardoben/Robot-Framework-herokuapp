@@ -47,11 +47,11 @@ Download File
             Chrome Multidownload
         END
         ${number_files}     Set Variable    2
-        Wait Until Keyword Succeeds     01 min  30 sec    Move File   ../../downloads/some-file.txt    ${download directory}
+        Wait Until Keyword Succeeds     01 min  30 sec    Move File   ../../downloads/test.txt    ${download directory}
     END
 
+    Wait Until Keyword Succeeds     01 min  30 sec    Move File   ../../downloads/some-file.txt    ${download directory}
 
-    Wait Until Keyword Succeeds     01 min  30 sec    Move File   ../../downloads/test.txt    ${download directory}
     Download should be done     ${download directory}   ${number_files}
 
 
