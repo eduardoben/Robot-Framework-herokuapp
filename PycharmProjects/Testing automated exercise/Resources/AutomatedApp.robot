@@ -87,7 +87,6 @@ File Upload
 
 Floating Menu
     [Documentation]     Verify that menu is shown after scrolling down page
-    # TODO
     FloatingMenu.Checking Floating Menu In View Port
 
 Form Authentication With Valid Credentials

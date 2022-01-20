@@ -10,18 +10,17 @@ Selecting a checkbox
     [Documentation]     It unselects checkbox then select it and later checks if it is selected
     [Arguments]     ${Checkbox}
     Wait Until Page Contains Element    ${Checkbox}
-    ${web}  Get WebElement    ${Checkbox}
-    ${selected}=   Execute Javascript  return arguments[0].checked;     ARGUMENTS   ${web}
+    Unselect Checkbox With Javascript   ${Checkbox}
+    Select Checkbox With Javascript    ${Checkbox}
+    #IF    "${selected}" == "True"
+     #   Click With Javascript     ${Checkbox}
+      #  Click With Javascript     ${Checkbox}
 
-    IF    "${selected}" == "True"
-        Click With Javascript     ${Checkbox}
-        Click With Javascript     ${Checkbox}
-    ELSE
-        Click With Javascript     ${Checkbox}
-    END
+    #ELSE
+     #   Click With Javascript     ${Checkbox}
+    #END
     Checkbox Should Be Selected     ${Checkbox}
 
-# TODO Create keyword of selecting checkbox with js
 
 
 

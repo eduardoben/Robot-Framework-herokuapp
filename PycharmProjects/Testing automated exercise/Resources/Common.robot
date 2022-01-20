@@ -19,6 +19,23 @@ Click With Javascript
     Execute Javascript    arguments[0].click();     ARGUMENTS   ${w_element}
     Sleep   ${wait}
 
+Select Checkbox With Javascript
+    [Arguments]     ${locator}
+    ${web}  Get WebElement    ${locator}
+    ${selected}=   Execute Javascript  return arguments[0].checked;     ARGUMENTS   ${web}
+    IF    "${selected}" != "True"
+        Click With Javascript     ${locator}
+    END
+
+
+Unselect Checkbox With Javascript
+    [Arguments]     ${locator}
+    ${web}  Get WebElement    ${locator}
+    ${selected}=   Execute Javascript  return arguments[0].checked;     ARGUMENTS   ${web}
+    IF    "${selected}" == "True"
+        Click With Javascript     ${locator}
+    END
+
 Click With Async Javascript
     [Arguments]  ${locator}     ${wait}=.25s
     ${w_element}     Get WebElement       ${locator}

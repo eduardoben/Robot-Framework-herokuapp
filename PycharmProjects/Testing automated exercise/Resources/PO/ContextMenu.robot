@@ -5,7 +5,7 @@ Library     CustomLibrary.py
 Resource    ../../Data/InputData.robot
 
 *** Variables ***
-${BOX}=     xpath=  //div[@id="hot-spot"]
+${BOX}=     xpath= //div[@id="hot-spot"]
 
 *** Keywords ***
 Validating Context Menu
