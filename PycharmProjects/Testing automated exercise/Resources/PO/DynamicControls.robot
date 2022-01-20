@@ -35,5 +35,4 @@ Validating actions
     ELSE
         Wait Until Element Contains    ${ENABLE_BUTTON}    Disable
         Element Should Be Enabled    ${locator}
-
     END
