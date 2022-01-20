@@ -11,8 +11,9 @@ To set browser, the file "InputData.robot" shall be modified especifically at "B
 Test cases pending of succesfully running on each browser are as follow:
 
 Internet explorer: 
-                    Context Menu test case
-                    Horizontal Slider test case - Slider controled by mouse 
+                    Context Menu test case - When Context menu is triggered the test freezes until user interaction is done.
+                    Horizontal Slider test case - Slider controled by mouse
+                    File download - Keyboard commands are randomly accepted.
 
 
 
