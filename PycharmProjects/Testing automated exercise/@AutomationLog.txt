@@ -1,2 +1,0 @@
-2022-01-13 16:04:04.568 CustomLibrary.py[78] download -> Find Control Timeout(10s): {SearchDepth: 4, Name: 'Save', ControlType: SplitButtonControl}
-2022-01-13 16:04:17.007 CustomLibrary.py[78] download -> Find Control Timeout(10s): {SearchDepth: 4, Name: 'Save', ControlType: SplitButtonControl}
