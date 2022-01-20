@@ -19,6 +19,13 @@ Click With Javascript
     Execute Javascript    arguments[0].click();     ARGUMENTS   ${w_element}
     Sleep   ${wait}
 
+Click With Async Javascript
+    [Arguments]  ${locator}     ${wait}=.25s
+    ${w_element}     Get WebElement       ${locator}
+    Execute Async Javascript    var callback = arguments[0].click();     ARGUMENTS   ${w_element}
+    ...     window.setTimeout(callback, 3000);
+
+
 Wait And Execute Keyword
      [Arguments]         ${keyword}     ${element}       ${timeout}=15 sec
      Wait Until Page Contains Element   ${element}       ${timeout}

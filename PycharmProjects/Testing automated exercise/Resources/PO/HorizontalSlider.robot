@@ -1,11 +1,9 @@
 *** Settings ***
 Library     SeleniumLibrary
-Library    CustomLibrary.py
-
 Resource    ../Common.robot
-
+Resource    ../../Data/InputData.robot
 *** Variables ***
-${SLIDER_LOCATOR}=   css= #content > div > div > input[type=range]
+${SLIDER_LOCATOR}=  //*[@id="content"]/div/div/input
 ${VALUE_LOCATOR}=   id= range
 *** Keywords ***
 Setting Slider Value With Keyboard
@@ -24,8 +22,20 @@ Setting Slider Value With Mouse
     # TODO  Check why the element is not properly detected by IE. Slider is not selected.
     [Documentation]     Simulates mouse movements to set slider value. It validates value.
     Wait Until Page Contains Element    ${SLIDER_LOCATOR}
-    #Set Focus To Element    ${SLIDER_LOCATOR}
-    Drag And Drop By Offset    ${SLIDER_LOCATOR}    28    0
+    Set Focus To Element    ${SLIDER_LOCATOR}
+    IF  "${BROWSER}" == "edge"
+        Drag And Drop By Offset    ${SLIDER_LOCATOR}    28    0
+    END
+    IF  "${BROWSER}" == "chrome"
+        Drag And Drop By Offset    ${SLIDER_LOCATOR}    28    0
+    END
+    IF  "${BROWSER}" == "firefox"
+        Drag And Drop By Offset    ${SLIDER_LOCATOR}    40    0
+    END
+    IF  "${BROWSER}" == "ie"
+        Drag And Drop By Offset    ${SLIDER_LOCATOR}    50    0
+    END
+
 
 
     #Install a plugin to determine coordinates

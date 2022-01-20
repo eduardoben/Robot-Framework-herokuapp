@@ -1,7 +1,7 @@
 *** Variables ***
 # Configuration
 # When selecting a browser type as shown:   firefox, ie, edge, chrome
-${BROWSER} =    firefox
+${BROWSER} =    ie
 ${BASE_URL}=    https://ss-testing-automated-exercise.herokuapp.com/
 ${BLANK} =      about:blank
 

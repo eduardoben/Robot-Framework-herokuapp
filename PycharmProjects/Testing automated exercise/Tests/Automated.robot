@@ -4,7 +4,7 @@ Resource  ../Resources/Common.robot
 Resource  ../Resources/AutomatedApp.robot
 
 Test Setup  Begin Web Test      ${URL}
-
+Test Timeout    1 min
 Test Teardown   End Web Test
 *** Variables ***
 
@@ -50,7 +50,9 @@ Selecting and verifying checkbox
 
 Validating Context Menu
    [Documentation]     It validates that alert is triggered and shows proper message.
+
    [Setup]     Begin Web Test  ${CONTEXT_URL}
+
    AutomatedApp.Validating Context Menu
 
 #REQ    -   Disappearing Element
