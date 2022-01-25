@@ -42,6 +42,9 @@ class CustomLibrary(object):
         time.sleep(2)
         py.press(['tab', 'tab', 'enter'], interval=4)
 
+    def ie_manage_window(self):
+        time.sleep(2)
+        py.press(['tab', 'enter'], interval=4)
     # JavaScript: HTML5 Drag and drop script
     # param1 (WebElement): Source element to drag
     # param2 (WebElement): Optional - target element for the drop
