@@ -1,13 +1,9 @@
 *** Settings ***
 Library     SeleniumLibrary
 Library     RequestsLibrary
+#pip install robotframework-requests
 Library     Collections
 *** Variables ***
-#PATHS TO ELEMENTS
-#${SIGN_USER}=   CSS/XPATH TO ELEMENT
-#${SIGN_PASS}=   CSS/XPATH TO ELEMENT
-#${LOGIN_BUTTON}=    CSS/XPATH TO ELEMENT
-
 
 *** Keywords ***
 Logging

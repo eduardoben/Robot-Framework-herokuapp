@@ -5,15 +5,15 @@ Library     SeleniumLibrary
 Resource    ../../Data/InputData.robot
 Resource    ../Common.robot
 *** Variables ***
-${MENU_LOCATOR}=    xpath=/html/body/div[2]/div/div/div[1]/ul/li[1]/a
+${menu_locator}=    xpath= //a[contains(text(),'Home')]
 
 *** Keywords ***
 
 Checking Floating Menu In View Port
 
-    Wait Until Page Contains Element    ${MENU_LOCATOR}
+    Wait Until Page Contains Element    ${menu_locator}
     Execute Javascript      window.scrollTo(0, document.body.scrollHeight)
-    Wait And Execute Keyword    Click With Javascript   ${MENU_LOCATOR}
+    Wait And Execute Keyword    Click With Javascript   ${menu_locator}
     Validation Of Floating Menu
 
 

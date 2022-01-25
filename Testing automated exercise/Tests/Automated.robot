@@ -26,12 +26,7 @@ Login With Invalid Credentials
 
 #REQ    -   ADD 20 ELEMENT AND DELETE THEM
 
-Adding Elements
-    [Documentation]    It verifies that user can add elements correctly through adding button.
-    [Setup]     Begin Web Test  ${APP_URL}
-    AutomatedApp.AddingElements
-
-Deleting Elements
+Adding And Deleting Elements
     [Documentation]    It verifies that user can delete elements one by one correctly. Through delete button of each element.
     [Setup]     Begin Web Test  ${APP_URL}
     AutomatedApp.DeletingElements

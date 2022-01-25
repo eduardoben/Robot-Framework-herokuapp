@@ -5,23 +5,22 @@ Library    Collections
 Resource    ../Common.robot
 
 *** Variables ***
-${ALERT_BUTTON_LOCATOR}=    xpath=  /html/body/div[2]/div/div/ul/li[1]/button
-${PROMPT_BUTTON_LOCATOR}=   xpath=  /html/body/div[2]/div/div/ul/li[3]/button
-${RESULT_LOCATOR}=  id= result
+${alert_button_locator}=    xpath=  //button[contains(text(),'Click for JS Alert')]
+${prompt_button_locator}=   xpath=  //button[contains(text(),'Click for JS Prompt')]
+${result_locator}=  id= result
 
 *** Keywords ***
 Managing Alerts
     [Documentation]     Triggers alerts and manage them. It calls validation alerts keyword to check action.
-    Click With Javascript   ${ALERT_BUTTON_LOCATOR}
+    Click With Javascript   ${alert_button_locator}
     Handle Alert
     Validation Alerts
-
-    Click With Javascript    ${PROMPT_BUTTON_LOCATOR}
+    Click With Javascript    ${prompt_button_locator}
     Input Text Into Alert    testing
     Validation Alerts
 
 
 Validation Alerts
     [Documentation]     Validates confirmation message from website.
-    ${confirmation}=    Get Text    ${RESULT_LOCATOR}
+    ${confirmation}=    Get Text    ${result_locator}
     List Should Contain Value       ${ALERT_MESSAGES}    ${confirmation}

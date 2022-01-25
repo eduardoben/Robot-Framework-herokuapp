@@ -1,22 +1,19 @@
 *** Settings ***
 Library     SeleniumLibrary
 Library    Collections
+Resource    ../../Data/InputData.robot
 *** Variables ***
-@{PAGE_IMAGES}
-@{KNOWN_IMAGES}     https://ss-testing-automated-exercise.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg  https://ss-testing-automated-exercise.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-1.jpg    https://ss-testing-automated-exercise.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-2.jpg    https://ss-testing-automated-exercise.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-3.jpg    https://ss-testing-automated-exercise.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-6.jpg    https://ss-testing-automated-exercise.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-7.jpg
-${IMAGE}=   ${EMPTY}
-@{IMAGE_ELEMENTS}   xpath=/html/body/div[2]/div/div/div/div/div[1]/div[1]/img   xpath=/html/body/div[2]/div/div/div/div/div[2]/div[1]/img   xpath=/html/body/div[2]/div/div/div/div/div[3]/div[1]/img
 
 *** Keywords ***
 Looking For All Images
     [Documentation]     It scans all the images from site and register them in a list. Then the names are validated.
     FOR     ${j}    IN RANGE    20
         FOR     ${i}    IN      @{IMAGE_ELEMENTS}
-            ${IMAGE}=   Get Element Attribute    ${i}    src
-            ${known}=   Run Keyword And Ignore Error    List Should Contain Value    ${PAGE_IMAGES}    ${IMAGE}
+            ${image}=   Get Element Attribute    ${i}    src
+            ${known}=   Run Keyword And Ignore Error    List Should Contain Value    ${PAGE_IMAGES}    ${image}
             IF  "${known}[0]" == 'FAIL'
-                Append To List    ${PAGE_IMAGES}    ${IMAGE}
-                Name Validation    ${IMAGE}
+                Append To List    ${PAGE_IMAGES}    ${image}
+                Name Validation    ${image}
             END
         END
         Reload Page

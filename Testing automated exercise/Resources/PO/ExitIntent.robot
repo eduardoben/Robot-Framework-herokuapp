@@ -5,7 +5,7 @@ Library    CustomLibrary.py
 Resource    ../Common.robot
 
 *** Variables ***
-${CLOSE_LOCATOR}=   xpath=  //div[@id="ouibounce-modal"]/div[2]/div[3]/p
+${close_locator}=   xpath=  //p[contains(text(),'Close')]
 ${loaded_page}=     xpath=  //div[@id="content"]
 
 *** Keywords ***
@@ -21,6 +21,6 @@ Mouse Out Of Page
 Modal Validation
     [Documentation]     Validates content of the page that modal is adding to the page if triggered
     Page Should Contain    This is a modal window
-    Wait Until Page Contains Element    ${CLOSE_LOCATOR}
-    Click With Javascript    ${CLOSE_LOCATOR}
+    Wait Until Page Contains Element    ${close_locator}
+    Click With Javascript    ${close_locator}
 

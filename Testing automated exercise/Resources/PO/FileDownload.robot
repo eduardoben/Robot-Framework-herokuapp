@@ -1,59 +1,71 @@
 *** Settings ***
 Library     SeleniumLibrary
 Library     OperatingSystem
-Library     CustomLibrary.py
+Library     CustomLibrary
 Resource    ../../Data/InputData.robot
 Resource    ../Common.robot
 *** Variables ***
 ${number_files}=    1
-${FIRST_LINK_LOCATOR}=     xpath=  /html/body/div[2]/div/div/a[1]
-${SECOND_LINK_LOCATOR}=     xpath=  /html/body/div[2]/div/div/a[2]
+${first_link_locator}=     xpath=  /html/body/div[2]/div/div/a[1]
+${second_link_locator}=     xpath=  /html/body/div[2]/div/div/a[2]
 *** Keywords ***
 Download File
     [Documentation]     Downloads a file and moves it to a new directory to confirm that file is downloadedC
     # create unique folder
 
-    ${now}    Get Time    epoch
-    ${download directory}    Join Path    ${OUTPUT DIR}    downloads_${now}
-    Create Directory    ${download directory}
-    ${first_exists}     Run Keyword And Ignore Error    Page Should Contain Element    ${FIRST_LINK_LOCATOR}
-    ${second_exists}     Run Keyword And Ignore Error   Page Should Contain Element    ${SECOND_LINK_LOCATOR}
-    Wait Until Page Contains Element    ${FIRST_LINK_LOCATOR}
-    Click With Javascript  ${FIRST_LINK_LOCATOR}   # downloads a file
+    File Should Not Exist    ../../../downloads/some-file.txt
+    File Should Not Exist    ../../../downloads/file.txt
+
+    ${download directory}=  Creating Directory For Downloads
+
+
+    ${first_exists}     Run Keyword And Ignore Error    Page Should Contain Element    ${first_link_locator}
+    ${second_exists}     Run Keyword And Ignore Error   Page Should Contain Element    ${second_link_locator}
+    Wait Until Page Contains Element    ${first_link_locator}
+    Click With Javascript  ${first_link_locator}   # downloads a file
 
     IF    "${BROWSER}" == 'ie'
-         Ie Download
-         sleep  1 sec
+        Ie Download
+        sleep  1 sec
     END
     IF    "${BROWSER}" == 'firefox'
-         Fx Download
+        Fx Download
     END
 
     IF    "${first_exists}[0]" == "PASS" and "${second_exists}[0]" == "PASS"
-
-        Wait Until Page Contains Element    ${SECOND_LINK_LOCATOR}
-        Click With Javascript  ${SECOND_LINK_LOCATOR}   # downloads a file
-
-        IF    "${BROWSER}" == 'ie'
-            Ie Multidownload
-        END
-        IF    "${BROWSER}" == 'firefox'
-             Fx Download
-        END
-        IF    "${BROWSER}" == 'edge'
-            Edge Multidownload
-        END
-        IF    "${BROWSER}" == 'chrome'
-            Chrome Multidownload
-        END
-        ${number_files}     Set Variable    2
-        Wait Until Keyword Succeeds     01 min  30 sec    Move File   ../../downloads/test.txt    ${download directory}
+        ${number_files}=    Downloading Second File     ${download directory}
     END
-
-    Wait Until Keyword Succeeds     01 min  30 sec    Move File   ../../downloads/some-file.txt    ${download directory}
-
+    Wait Until Keyword Succeeds     01 min  30 sec    Move File   ../../../downloads/some-file.txt    ${download directory}
     Download should be done     ${download directory}   ${number_files}
 
+Creating Directory For Downloads
+    ${now}    Get Time    epoch
+    ${download directory}    Join Path    ${OUTPUT DIR}    downloads_${now}
+    Create Directory    ${download directory}
+    [Return]    ${download directory}
+
+Downloading Second File
+    [Documentation]     Execute actions requeried to handle multidownloads depending of browser. Returns number of files downloaded
+    [Arguments]     ${download directory}
+    Wait Until Page Contains Element    ${second_link_locator}
+    Click With Javascript  ${second_link_locator}   # downloads a file
+
+    IF    "${BROWSER}" == 'ie'
+        Ie Multidownload
+    END
+    IF    "${BROWSER}" == 'firefox'
+        Fx Download
+    END
+    IF    "${BROWSER}" == 'edge'
+        Edge Multidownload
+    END
+    IF    "${BROWSER}" == 'chrome'
+        Chrome Multidownload
+    END
+
+    ${number_files}     Set Variable    2
+    Wait Until Keyword Succeeds     01 min  30 sec    Move File   ../../../downloads/test.txt    ${download directory}
+    [Return]    ${number_files}
 
 Download should be done
     [Documentation]    Verifies that the directory has only one folder and it is not a temp file.

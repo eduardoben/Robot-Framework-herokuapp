@@ -5,17 +5,13 @@ Resource  ../Resources/AutomatedApp.robot
 
 Test Setup  Begin Web Test      ${URL}
 
-Test Teardown   End Web Test
+#Test Teardown   End Web Test
 *** Variables ***
 
 #robot -d results tests/Automated.robot
 *** Test Cases ***
-
-
-
-#REQ    -   File Download
-File Download
-    [Documentation]     Click a link to trigger a download and later validates it.
-    [Setup]     Begin Web Test  ${FILE_URL}
-    AutomatedApp.File Download
-
+#REQ    -   Multiple Windows
+Multiple Windows
+    [Documentation]     This test case verifies that user can click on link to open a new window.
+    [Setup]     Begin Web Test  ${WINDOWS_URL}
+    AutomatedApp.Multiple Windows

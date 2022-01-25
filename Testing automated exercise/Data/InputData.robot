@@ -28,6 +28,10 @@ ${DRAG_URL}=    https://ss-testing-automated-exercise.herokuapp.com/drag_and_dro
 
 #DATA - DYNAMIC CONTENT
 ${DYNAMIC_URL}=    https://ss-testing-automated-exercise.herokuapp.com/dynamic_content
+@{PAGE_IMAGES}
+@{KNOWN_IMAGES}     https://ss-testing-automated-exercise.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg  https://ss-testing-automated-exercise.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-1.jpg    https://ss-testing-automated-exercise.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-2.jpg    https://ss-testing-automated-exercise.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-3.jpg    https://ss-testing-automated-exercise.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-6.jpg    https://ss-testing-automated-exercise.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-7.jpg
+
+@{IMAGE_ELEMENTS}   xpath=/html/body/div[2]/div/div/div/div/div[1]/div[1]/img   xpath=/html/body/div[2]/div/div/div/div/div[2]/div[1]/img   xpath=/html/body/div[2]/div/div/div/div/div[3]/div[1]/img
 
 #DATA - DYNAMIC CONTROLS
 ${CONTROLS_URL}=    https://ss-testing-automated-exercise.herokuapp.com/dynamic_controls

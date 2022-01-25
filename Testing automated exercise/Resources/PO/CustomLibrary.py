@@ -5,6 +5,7 @@ from selenium import webdriver
 # pip install pyautogui
 py.FAILSAFE = False
 
+
 class CustomLibrary(object):
     VERSION = 1
 
@@ -20,7 +21,6 @@ class CustomLibrary(object):
     def move_initial(self):
         screen = py.size()
         py.click(x=(screen.width / 4), y=(screen.height / 6), duration=1)
-
 
     def ie_download(self):
         time.sleep(2)
