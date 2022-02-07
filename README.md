@@ -19,11 +19,15 @@ All other browsers are OK.
 
 Instructions to run tests:
 
-1- Installing following libraries (pip requiered):
+1- Installing following Robot framework libraries (pip requiered):
   SeleniumLibrary - pip install --upgrade robotframework-seleniumlibrary
   RequestsLibrary - pip install robotframework-requests
   
-2- In order to run test cases in desired browser, file "Automated.robot" should be run in terminal with the following command "robot --variable BROWSER:edge -d results          tests/Automated.robot". 
+2- Installing following python libraries:
+  pyautogui - pip install pyautogui
+  Selenium - pip install selenium
+  
+3- In order to run test cases in desired browser, file "Automated.robot" should be run in terminal with the following command "robot --variable BROWSER:edge -d results          tests/Automated.robot". 
 
 
   
