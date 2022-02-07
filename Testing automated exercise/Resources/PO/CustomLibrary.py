@@ -10,39 +10,43 @@ class CustomLibrary(object):
     VERSION = 1
 
     def move_mouse_out(self):
+        ''' Moves mouse to width/4 and height/6 of the screen '''
         screen = py.size()
         py.dragTo(x=(screen.width/4), y=(screen.height/6), duration=1, mouseDownUp=False)
         py.dragTo(0, 0, 1, mouseDownUp=False)
 
     def move_mouse_and_click(self, x, y):
+        ''' Moves mouse to a desire coordinate given by x and y, then click '''
         py.moveTo(x, y)
         py.click()
 
-    def move_initial(self):
-        screen = py.size()
-        py.click(x=(screen.width / 4), y=(screen.height / 6), duration=1)
-
     def ie_download(self):
+        ''' Keyword to manage downloading through ie browser. It presses 2 tabs and one enter'''
         time.sleep(2)
         py.press(['tab', 'tab', 'enter'], interval=1)
 
     def ie_multidownload(self):
+        ''' Keyword to manage multidownloading through ie browser. It presses 6 tabs and one enter'''
         time.sleep(2)
         py.press(['tab', 'tab', 'tab', 'tab', 'tab', 'tab', 'enter'], interval=10)
 
     def fx_download(self):
+        ''' Keyword to manage downloading through firefox browser. It presses down and one enter'''
         time.sleep(2)
         py.press(['down', 'enter'], interval=1)
 
     def edge_multidownload(self):
+        ''' Keyword to manage multidownloading through edge browser. It presses one tab and one enter'''
         time.sleep(2)
         py.press(['tab', 'enter'], interval=4)
 
     def chrome_multidownload(self):
+        ''' Keyword to manage multidownloading through chrome browser. It presses two tab and one enter'''
         time.sleep(2)
         py.press(['tab', 'tab', 'enter'], interval=4)
 
     def ie_manage_window(self):
+        ''' Manage window when opened in ie browser'''
         time.sleep(2)
         py.press(['tab', 'enter'], interval=4)
     # JavaScript: HTML5 Drag and drop script
@@ -54,6 +58,7 @@ class CustomLibrary(object):
     # param5 (string): Optional - Key pressed (alt or ctrl or shift)
 
     def dragging_and_dropping(self, driver, source, target=None, offsetX=0, offsetY=0, delay=25, key=None) :
+        ''' Drags and drops a desire element to a given position. It receives the browser driver, element and coordinates '''
         js_drag_drop = "var t=arguments,e=t[0],n=t[1],i=t[2]||0,o=t[3]||0,r=t[4]||1,a=t[5]||''," \
                            "s='alt'===a||'\ue00a'===a,l='ctrl'===a||'\ue009'===a,c='shift'===a||'" \
                            "\ue008'===a,u=e.ownerDocument,f=e.getBoundingClientRect()," \

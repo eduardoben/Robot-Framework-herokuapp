@@ -16,7 +16,6 @@ Checking Floating Menu In View Port
     Wait And Execute Keyword    Click With Javascript   ${menu_locator}
     Validation Of Floating Menu
 
-
 Validation Of Floating Menu
     #[Arguments]     ${visible}
     #Should Be True    ${visible}

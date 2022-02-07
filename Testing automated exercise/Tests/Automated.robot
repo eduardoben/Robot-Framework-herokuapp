@@ -20,7 +20,7 @@ Login With Valid Credentials
 
 
 Login With Invalid Credentials
-     [Documentation]     Validates that user can not log in with invalid credentials and recieves a message.
+    [Documentation]     Validates that user can not log in with invalid credentials and recieves a message.
     [Setup]     Begin Web Test  ${BLANK}
     AutomatedApp.InvalidLogin       ${INVALIDCREDENTIALS}
 
@@ -35,7 +35,6 @@ Adding And Deleting Elements
 #REQ    -   SELECT CHECKBOXES
 Selecting and verifying checkbox
     [Documentation]     It verifies that user can select checkboxs.
-
     [Setup]     Begin Web Test  ${CHECKBOX_URL}
     [Template]  AutomatedApp.Selecting a checkbox
     ${CHECKBOX1}
@@ -45,9 +44,7 @@ Selecting and verifying checkbox
 
 Validating Context Menu
    [Documentation]     It validates that alert is triggered and shows proper message.
-
    [Setup]     Begin Web Test  ${CONTEXT_URL}
-
    AutomatedApp.Validating Context Menu
 
 #REQ    -   Disappearing Element
@@ -59,7 +56,6 @@ Checking Disappearing Element
 #REQ    -   Drag and Drop
 
 Dragging And Dropping
-
     [documentation]    Validates that user can drag a drop an element to another position.
     [Setup]     Begin Web Test  ${DRAG_URL}
     AutomatedApp.Dragging And Dropping Element

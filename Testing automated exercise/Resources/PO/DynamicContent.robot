@@ -1,5 +1,5 @@
 *** Settings ***
-Library     SeleniumLibrary
+Library    SeleniumLibrary
 Library    Collections
 Resource    ../../Data/InputData.robot
 *** Variables ***
